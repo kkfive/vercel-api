@@ -1,0 +1,22 @@
+{
+  "rewrites": [
+    {
+      "source": "/index",
+      "destination": "/api/index"
+    },
+    {
+      "source": "/github",
+      "destination": "/api/github"
+    },
+    {
+      "source": "/telegram",
+      "destination": "/api/telegram"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://xiaokang.me"
+    }
+  ]
+}
