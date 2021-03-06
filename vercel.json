@@ -11,6 +11,10 @@
     {
       "source": "/telegram",
       "destination": "/api/telegram"
+    },
+    {
+      "source": "/image",
+      "destination": "/api/image"
     }
   ],
   "redirects": [
