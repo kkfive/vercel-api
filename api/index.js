@@ -26,18 +26,29 @@ class Api extends Base {
     this.res.setHeader('Content-Type', contentType)
     this.res.send(data)
   }
+  // 获取qq头像
+  async qlogo(qq) {
+    super.setResponeseHeader()
+    const { data, contentType } = await crosComponents(
+      `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=0`
+    )
+    this.res.setHeader('Content-Type', contentType)
+    this.res.send(data)
+  }
 }
 
 module.exports = async (req, res) => {
   const api = new Api(req, res)
-  const { type, url } = api.getRequestData()
+  const { type, url, qq } = api.getRequestData()
 
   switch (type) {
     case 'cros':
       await api.cros(url)
       break
+    case 'qlogo':
+      await api.qlogo(qq)
+      break
     default:
       api.responseMessage()
   }
 }
-
