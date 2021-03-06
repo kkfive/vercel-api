@@ -5,6 +5,9 @@
   "author": "XiaoKang <dreamytzk@outlook.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.1"
+    "@vercel/node": "^1.9.0",
+    "axios": "^0.21.1",
+    "node-fetch": "^2.6.1",
+    "sharp": "0.27.2"
   }
 }

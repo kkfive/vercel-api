@@ -13,7 +13,7 @@ class Base {
    * @param {String} method='GET' 请求方式
    * @returns {Promise}
    */
-  request(url, data = {}, method = 'GET') {
+  request(url, data = {}, method = 'GET', config) {
     const auth = this.Authorization
     return new Promise((resolve, reject) => {
       let promise
@@ -26,7 +26,8 @@ class Base {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + auth
               }
-            : { 'Content-Type': 'application/json' }
+            : { 'Content-Type': 'application/json' },
+          ...config
         })
       } else {
         promise = axios.post(url, data, {
@@ -70,20 +71,25 @@ class Base {
     return requestData
   }
   // 定义返回格式
-  responseMessage(
-    data = { message: '欢迎来到我的Api项目哦！', Power: 'https://xiaokang.me' },
-    code = 200
-  ) {
+  responseMessage(data, code = 200) {
+    data = data || {
+      message: '欢迎来到我的Api项目哦！',
+      Power: 'https://xiaokang.me'
+    }
+    this.setResponeseHeader()
+    return this.res.status(200).send({
+      code,
+      data
+    })
+  }
+  // 设置响应头
+  setResponeseHeader() {
     this.res.setHeader('Access-Control-Allow-Origin', '*')
     this.res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
     this.res.setHeader(
       'Access-Control-Allow-Headers',
       'X-Requested-With,content-type, Authorization'
     )
-    return this.res.status(200).send({
-      code,
-      data
-    })
   }
 }
 
