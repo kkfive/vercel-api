@@ -91,7 +91,7 @@ module.exports = async (req, res) => {
       const textData = await api.text(id, secert, agentid, msg, touser, type)
       api.responseMessage(textData)
       break
-    case 'mk':
+    case 'markdown':
       const mkData = await api.text(id, secert, agentid, msg, touser, type)
       api.responseMessage(mkData)
       break
