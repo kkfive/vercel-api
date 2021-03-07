@@ -61,13 +61,10 @@ class Base {
   getRequestData() {
     let requestData = {}
     if (this.req.method === 'GET') {
-      console.log(this.req, 'this.req')
       requestData = this.req.query || {}
-      console.log('requestData', requestData)
     } else {
       requestData = this.req.body || {}
     }
-    console.log(requestData)
     return requestData
   }
   // 定义返回格式
